@@ -24,19 +24,18 @@ TEST(GuesserTest, smoke_test)
   EXPECT_EQ(1, object0.match("Secret"));
   EXPECT_EQ(1, object0.match("Secret"));
   EXPECT_EQ(1, object0.match("Secret"));
-  // test if it gets reset
+  // test if tries gets reset
   Guesser object1("Secret");
   EXPECT_EQ(0, object1.match("secret"));
   EXPECT_EQ(0, object1.match("secret"));
   EXPECT_EQ(1, object1.match("Secret"));
   EXPECT_EQ(0, object1.match("secret"));
   EXPECT_EQ(1, object1.match("Secret"));
-  // above test fails test if its a brute force issue
+  // check to see if brute force is triggered right away
   Guesser object2("Secret");
-  EXPECT_EQ(0, object2.match("Secrer"));
-  EXPECT_EQ(0, object2.match("secret"));
-  EXPECT_EQ(1, object2.match("Secret"));
-  EXPECT_EQ(0, object2.match("secret"));
-  EXPECT_EQ(1, object2.match("Secret"));
+  EXPECT_EQ(0, object2.match("password"));
+  EXPECT_EQ(0, object2.match("Secret"));
+
+
 
 }
